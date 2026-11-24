@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kertas & Pena — Toko Alat Tulis Modern</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- File CSS Kustom -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo">
+        <span class="logo-icon">✒️</span>
+        <span>Kertas<span class="accent">&</span>Pena</span>
+      </a>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cari buku catatan, pulpen gel, binder..." />
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Area User / Login -->
+        <div id="userSection">
+          <button class="btn btn-outline" id="openLoginBtn">Masuk / Daftar</button>
+        </div>
+
+        <!-- Tombol Keranjang -->
+        <button class="btn btn-primary cart-btn" id="openCartBtn">
+          <span>🛒 Keranjang</span>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="pill">✨ Koleksi Alat Tulis Estetik & Fungsional</span>
+        <h1>Lengkapi Meja Kerja & Belajar dengan <span class="accent">Kualitas Terbaik</span></h1>
+        <p>Temukan berbagai pilihan buku catatan, pulpen presisi, penanda warna pastel, hingga perlengkapan meja yang membuat produktivitasmu makin maksimal.</p>
+        <div class="hero-buttons">
+          <a href="#katalog" class="btn btn-primary btn-lg">Belanja Sekarang</a>
+          <span class="promo-note">🚚 Gratis ongkir min. belanja Rp150.000</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="stat-item">
+          <strong>100%</strong>
+          <span>Kertas Ramah Tinta</span>
+        </div>
+        <div class="stat-item">
+          <strong>24 Jam</strong>
+          <span>Pengiriman Cepat</span>
+        </div>
+        <div class="stat-item">
+          <strong>4.9 ★</strong>
+          <span>Rating Pelanggan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KATALOG PRODUK -->
+  <main class="container main-section" id="katalog">
+    <div class="catalog-header">
+      <div>
+        <h2>Katalog Produk</h2>
+        <p class="subtitle">Pilih kebutuhan alat tulis favoritmu</p>
+      </div>
+
+      <div class="filter-controls">
+        <!-- Filter Kategori -->
+        <div class="category-tabs" id="categoryTabs">
+          <button class="tab active" data-category="Semua">Semua</button>
+          <button class="tab" data-category="Buku & Kertas">Buku & Kertas</button>
+          <button class="tab" data-category="Pulpen & Pensil">Pulpen & Pensil</button>
+          <button class="tab" data-category="Penanda & Warna">Penanda & Warna</button>
+          <button class="tab" data-category="Aksesoris Meja">Aksesoris Meja</button>
+        </div>
+
+        <!-- Urutkan Harga -->
+        <select id="sortSelect" class="sort-select">
+          <option value="default">Urutkan: Terpopuler</option>
+          <option value="price-asc">Harga: Terendah ke Tertinggi</option>
+          <option value="price-desc">Harga: Tertinggi ke Terendah</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Grid Produk (Diisi otomatis oleh JavaScript) -->
+    <div class="product-grid" id="productGrid"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 <strong>Kertas & Pena</strong>. Dibuat dengan penuh semangat untuk produktivitas.</p>
+      <p class="footer-note">Simulasi E-Commerce Frontend (HTML, CSS, JS)</p>
+    </div>
+  </footer>
+
+  <!-- OVERLAY GELAP -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- SIDEBAR KERANJANG BELANJA -->
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3>🛒 Keranjang Belanja</h3>
+      <button class="close-btn" id="closeCartBtn">✕</button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <!-- Item keranjang dirender lewat JS -->
+    </div>
+
+    <div class="cart-footer" id="cartFooter">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="subtotalText">Rp0</span>
+      </div>
+      <div class="summary-row">
+        <span>Ongkos Kirim</span>
+        <span id="shippingText">Rp15.000</span>
+      </div>
+      <div class="summary-row total-row">
+        <span>Total Bayar</span>
+        <span id="totalText">Rp0</span>
+      </div>
+      <button class="btn btn-primary btn-block" id="checkoutBtn">Lanjut ke Pembayaran</button>
+    </div>
+  </aside>
+
+  <!-- MODAL LOGIN & REGISTER -->
+  <div class="modal" id="authModal">
+    <div class="modal-header">
+      <h3 id="authTitle">Masuk ke Akun</h3>
+      <button class="close-btn" id="closeAuthBtn">✕</button>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-mode="login">Masuk</button>
+      <button class="auth-tab" data-mode="register">Daftar Baru</button>
+    </div>
+
+    <form id="authForm" class="form-stack">
+      <div class="form-group hidden" id="nameGroup">
+        <label for="authName">Nama Lengkap</label>
+        <input type="text" id="authName" placeholder="Contoh: Budi Santoso" />
+      </div>
+      <div class="form-group">
+        <label for="authEmail">Email</label>
+        <input type="email" id="authEmail" required placeholder="nama@email.com" />
+      </div>
+      <div class="form-group">
+        <label for="authPassword">Kata Sandi</label>
+        <input type="password" id="authPassword" required placeholder="Minimal 6 karakter" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="authSubmitBtn">Masuk Sekarang</button>
+      <button type="button" class="btn btn-outline btn-block" id="demoLoginBtn">⚡ Masuk Instan (Akun Demo)</button>
+    </form>
+  </div>
+
+  <!-- MODAL CHECKOUT -->
+  <div class="modal" id="checkoutModal">
+    <div class="modal-header">
+      <h3>📦 Konfirmasi Pesanan</h3>
+      <button class="close-btn" id="closeCheckoutBtn">✕</button>
+    </div>
+
+    <form id="checkoutForm" class="form-stack">
+      <div class="form-group">
+        <label for="shipName">Nama Penerima</label>
+        <input type="text" id="shipName" required />
+      </div>
+      <div class="form-group">
+        <label for="shipAddress">Alamat Lengkap Pengiriman</label>
+        <textarea id="shipAddress" rows="3" required placeholder="Jl. Merdeka No. 10, Kecamatan, Kota, Kode Pos"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="paymentMethod">Metode Pembayaran</label>
+        <select id="paymentMethod" required>
+          <option value="Transfer Bank (BCA / Mandiri / BRI)">Transfer Bank (BCA / Mandiri / BRI)</option>
+          <option value="QRIS / E-Wallet (GoPay, OVO, DANA)">QRIS / E-Wallet (GoPay, OVO, DANA)</option>
+          <option value="COD (Bayar di Tempat)">COD (Bayar di Tempat)</option>
+        </select>
+      </div>
+      <div class="checkout-total-box">
+        <span>Total yang harus dibayar:</span>
+        <strong id="checkoutFinalTotal">Rp0</strong>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Buat Pesanan Sekarang</button>
+    </form>
+  </div>
+
+  <!-- MODAL RIWAYAT PESANAN -->
+  <div class="modal modal-lg" id="ordersModal">
+    <div class="modal-header">
+      <h3>🧾 Riwayat Pesanan Saya</h3>
+      <button class="close-btn" id="closeOrdersBtn">✕</button>
+    </div>
+    <div id="ordersList" class="orders-list"></div>
+  </div>
+
+  <!-- NOTIFIKASI TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- File JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
